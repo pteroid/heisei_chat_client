@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import Keitai from './views/Keitai'
 import Mail from './views/Mail'
 import Inbox from './views/Inbox'
 import ReceivedMails from './views/ReceivedMails'
+import Pokebell from "./views/Pokebell";
 
 Vue.use(Router)
 
@@ -17,19 +19,30 @@ export default new Router({
             component: Home
         },
         {
-            path: '/mail',
-            name: 'mail',
-            component: Mail
+            path: '/keitai',
+            component: Keitai,
+            children: [
+                {
+                    path: 'mail',
+                    name: 'mail',
+                    component: Mail
+                },
+                {
+                    path: 'inbox',
+                    name: 'inbox',
+                    component: Inbox
+                },
+                {
+                    path: 'inbox/received',
+                    name: 'received',
+                    component: ReceivedMails
+                },
+            ]
         },
         {
-            path: '/inbox',
-            name: 'inbox',
-            component: Inbox
-        },
-        {
-            path: '/inbox/received',
-            name: 'received',
-            component: ReceivedMails
+            path: '/pokebell',
+            name: 'pokebell',
+            component: Pokebell
         },
         {
             path: '/about',
