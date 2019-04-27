@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Mail from './views/Mail'
 import Inbox from './views/Inbox'
+import ReceivedMails from './views/ReceivedMails'
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
             path: '/inbox',
             name: 'inbox',
             component: Inbox
+        },
+        {
+            path: '/inbox/received',
+            name: 'received',
+            component: ReceivedMails
         },
         {
             path: '/about',
