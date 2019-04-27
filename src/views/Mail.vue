@@ -42,8 +42,16 @@
 </template>
 
 <script>
+    import store from '../store'
+
     export default {
-        name: "Mail"
+        name: "Mail",
+        beforeRouteEnter(to, from, next) {
+            if (from.name === 'home') {
+                store.dispatch('getReceivedKeitaiMessagesAction')
+            }
+            next()
+        }
     }
 </script>
 
