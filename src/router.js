@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Mail from './views/Mail'
+import Inbox from './views/Inbox'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ export default new Router({
             path: '/mail',
             name: 'mail',
             component: Mail
+        },
+        {
+            path: '/inbox',
+            name: 'inbox',
+            component: Inbox
         },
         {
             path: '/about',
