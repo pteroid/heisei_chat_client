@@ -5,6 +5,7 @@ import Keitai from './views/Keitai'
 import Mail from './views/Mail'
 import Inbox from './views/Inbox'
 import ReceivedMails from './views/ReceivedMails'
+import PreviewMail from "./views/PreviewMail";
 import Pokebell from "./views/Pokebell";
 
 Vue.use(Router)
@@ -37,6 +38,12 @@ export default new Router({
                     name: 'received',
                     component: ReceivedMails
                 },
+                {
+                    path: 'inbox/received/:id',
+                    name: 'preview_mail',
+                    component: PreviewMail,
+                    props: true
+                }
             ]
         },
         {
