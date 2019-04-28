@@ -7,6 +7,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        userInfo: {
+            number: "",
+            email: "",
+            username: ""
+        },
         receivedKeitaiMessages: [
             {
                 id: 1,
@@ -43,6 +48,9 @@ export default new Vuex.Store({
                 payload[i].created_at = dayjs(payload[i].created_at)
             }
             state.receivedKeitaiMessages = payload
+        },
+        setUserInfoProp(state, payload) {
+            state.userInfo[payload.prop_name] = payload.value
         },
         setEditingMailProp(state, payload) {
             state.editingMail[payload.prop_name] = payload.value
