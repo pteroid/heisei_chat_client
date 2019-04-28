@@ -3,7 +3,7 @@
     <div id="nav">
       <router-link to="/">Home</router-link>
       <router-link to="/pokebell">Pokebell</router-link>
-      <router-link to="/pokebellSend">pokebellSend</router-link>
+      <router-link to="/send">pokebellSend</router-link>
     </div>
     <div class="external">
       <div class="inside">
