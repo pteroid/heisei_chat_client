@@ -6,6 +6,7 @@ import Mail from './views/Mail'
 import Inbox from './views/Inbox'
 import ReceivedMails from './views/ReceivedMails'
 import Pokebell from "./views/Pokebell";
+import PokebellSend from "./views/PokebellSend"
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ export default new Router({
             path: '/pokebell',
             name: 'pokebell',
             component: Pokebell
+        },
+        {
+            path: '/pokebellSend',
+            name: 'pokebellSend',
+            component: PokebellSend
         },
         {
             path: '/about',
