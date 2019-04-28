@@ -19,21 +19,19 @@
                     <div class="iconrow">
                         <div class="icon">🕒</div>
                     </div>
-                    <div class="content"> 2019/04/27 16:16</div>
+                    <div class="content">{{message.created_at.format("YYYY/MM/DD HH:mm")}}</div>
                 </div>
                 <div class="row from">
                     <div class="iconrow">
                         <div class="icon">From</div>
                     </div>
-                    <div class="content">ソフトバンク</div>
+                    <div class="content">{{this.message.from_user.email}}</div>
                 </div>
                 <div class="row sub">
                     <div class="iconrow">
                         <div class="icon">Sub</div>
                     </div>
-                    <div class="content">
-                        【お客さま限定】10,000円割引クーポンプレゼント
-                    </div>
+                    <div class="content sub-content">{{this.message.title}}</div>
                 </div>
                 <div class="row attachment">
                     <div class="iconrow">
@@ -42,26 +40,7 @@
                     <div class="content">添付ﾌｧｲﾙなし</div>
                 </div>
             </div>
-            <div class="mailcontent">
-                ガラケーをご利用中のお客さま限定で、機種変更に使えるクーポンをプレゼント🎁
-
-                【特別クーポン】
-                機種代金が税込10,000円割引！
-
-                有効期限：5月31日(金)まで
-
-                対象機種など詳細はこちらをご確認ください。
-                http://u.softbank.jp/CsR7dVt
-                （アクセスには通信料がかかります）
-
-                さらに【スマホスタート割】でガラケーから対象のスマホにすると機種代金が税込10,800円割引になります。※
-
-                令和を新しいスマホで迎えよう!
-                ゴールデンウィークはソフトバンク取扱店へぜひお越しください
-
-
-                ※ 通話基本プランの2年契約／2年契約（フリープラン）またはハートフレンド割引に加入すること。学割放題との併用はできません。
-            </div>
+            <div class="mailcontent">{{this.message.content}}</div>
         </div>
         <div class="buttonbar">
             <div class="side">
@@ -81,9 +60,21 @@
 </template>
 
 <script>
+
     export default {
         name: "PreviewMail",
-        props: ['id']
+        props: ['id'],
+        computed: {
+            message: {
+                get() {
+                    return this.$store.state.receivedKeitaiMessages
+                        .find(msg => msg.id === Number(this.id))
+                }
+            }
+
+
+        },
+
     }
 </script>
 
@@ -137,7 +128,7 @@
         flex-direction: column;
         background-color: white;
         color: black;
-        padding-top: 10px;
+        /*padding-top: 10px;*/
     }
 
     .main .mailinfo {
@@ -168,7 +159,7 @@
         0 1px 0 #FFF, 0 -1px 0 #FFF,
         -1px 0 0 #FFF, 1px 0 0 #FFF;
         /*background-color: #3b3a45;*/
-        background: linear-gradient(to right, #d8bfaa, #b5a492,#7d6455);
+        background: linear-gradient(to right, #d8bfaa, #b5a492, #7d6455);
         border-radius: 0.3em;
         /*text-align: center;*/
         display: flex;
@@ -182,15 +173,15 @@
         overflow: hidden;
     }
 
-    .mail .mailinfo .sub .content {
-        overflow: hidden;
-        height: 5.4em; /* 3em（行）x line-heightの1.8 */
-        line-height: 1.8;
+    .sub-content {
+        height: 3em;
+        line-height: 1rem;
     }
 
     .main .mailcontent {
         overflow: auto;
         flex: 1;
+        white-space: pre-wrap;
     }
 
 
@@ -264,4 +255,5 @@
         text-align: center;
         width: 100%;
     }
+
 </style>
