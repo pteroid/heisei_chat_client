@@ -90,7 +90,7 @@ export default {
 }
 p {
   text-align: left;
-  margin-left: 10px;
+  margin-left: 22.5px;
   width: 30%;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: none;
