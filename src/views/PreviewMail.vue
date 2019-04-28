@@ -1,60 +1,85 @@
 <template>
-    <div class="received_mails">
+    <div class="preview_mail">
         <div class="statbar">
             <img src="../assets/antenna.svg" width="20" height="20">
-            <div class="time">1:23</div>
+            <div class="time">2:13</div>
             <div class="battery">
                 <img src="../assets/battery.png" width="20" height="20">
             </div>
+
         </div>
         <div class="titlebar">
             <div class="left">✉️</div>
             <div class="center">受信ﾒｰﾙ</div>
-            <div class="right">1/71</div>
+            <div class="right">1/424</div>
         </div>
         <div class="main">
-            <router-link tag="div" class="item" :to="{name: 'preview_mail', params:{id: message.id}}"
-                         v-for="message in messages" :key="message.id">
-                <div class="numbox">
-                    {{message.id}}
+            <div class="mailinfo">
+                <div class="row date">
+                    <div class="iconrow">
+                        <div class="icon">🕒</div>
+                    </div>
+                    <div class="content">{{message.created_at.format("YYYY/MM/DD HH:mm")}}</div>
                 </div>
-                <div class="message">
-                    ✉️{{message.created_at.format("H:mm")}} {{message.from_user.name}}<br>
-                    {{message.title}}
+                <div class="row from">
+                    <div class="iconrow">
+                        <div class="icon">From</div>
+                    </div>
+                    <div class="content">{{this.message.from_user.email}}</div>
                 </div>
-            </router-link>
+                <div class="row sub">
+                    <div class="iconrow">
+                        <div class="icon">Sub</div>
+                    </div>
+                    <div class="content sub-content">{{this.message.title}}</div>
+                </div>
+                <div class="row attachment">
+                    <div class="iconrow">
+                        <div class="icon">📎</div>
+                    </div>
+                    <div class="content">添付ﾌｧｲﾙなし</div>
+                </div>
+            </div>
+            <div class="mailcontent">{{this.message.content}}</div>
         </div>
         <div class="buttonbar">
             <div class="side">
-                <div class="empty"></div>
+                <div class="button">返信</div>
                 <div class="button">▲ﾍﾟｰｼﾞ</div>
             </div>
             <div class="center">
-                <div class="button">選択</div>
+                <div class="empty"></div>
             </div>
             <div class="side">
                 <div class="button">ﾒﾆｭｰ</div>
                 <div class="button">▼ﾍﾟｰｼﾞ</div>
             </div>
         </div>
+
     </div>
 </template>
 
 <script>
+
     export default {
-        name: "ReceivedMails",
+        name: "PreviewMail",
+        props: ['id'],
         computed: {
-            messages: {
+            message: {
                 get() {
                     return this.$store.state.receivedKeitaiMessages
+                        .find(msg => msg.id === Number(this.id))
                 }
             }
+
+
         },
-    };
+
+    }
 </script>
 
 <style scoped>
-    .received_mails {
+    .preview_mail {
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -76,7 +101,7 @@
     }
 
     .statbar .battery {
-        /*    margin-left: auto;*/
+        /* margin-left: auto;*/
     }
 
     /*タイトルバー*/
@@ -103,23 +128,80 @@
         flex-direction: column;
         background-color: white;
         color: black;
-        padding-top: 10px;
+        /*padding-top: 10px;*/
     }
 
-    .main .item {
+    .main .mailinfo {
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+        border-bottom: solid 2px #a7a9a4;
+
+    }
+
+    .main .mailinfo .row {
+        display: flex;
+    }
+
+    .main .mailinfo .row .iconrow {
+        width: 20%;
+        text-align: center;
+        display: flex;
+        align-content: center;
+        align-items: center;
+    }
+
+    .main .mailinfo .row .iconrow .icon {
+        margin: 1px 5px;
+        font-size: 12px;
+        text-shadow: 1px 1px 0 #FFF, -1px -1px 0 #FFF,
+        -1px 1px 0 #FFF, 1px -1px 0 #FFF,
+        0 1px 0 #FFF, 0 -1px 0 #FFF,
+        -1px 0 0 #FFF, 1px 0 0 #FFF;
+        /*background-color: #3b3a45;*/
+        background: linear-gradient(to right, #d8bfaa, #b5a492, #7d6455);
+        border-radius: 0.3em;
+        /*text-align: center;*/
         display: flex;
         align-items: center;
-        height: 14%;
-        border-bottom: solid 0.1px rgb(172, 172, 165);
-        overflow: hidden;
-        white-space: nowrap;
-        /*    text-overflow: "-";*/
+        justify-content: center;
+        width: 100%;
     }
 
-    .main .item:hover {
-        background-color: black;
-        color: white;
+    .main .mailinfo .row .content {
+        flex: 1;
+        overflow: hidden;
     }
+
+    .sub-content {
+        height: 3em;
+        line-height: 1rem;
+    }
+
+    .main .mailcontent {
+        overflow: auto;
+        flex: 1;
+        white-space: pre-wrap;
+    }
+
+
+    /*
+    .main .item {
+    display: flex;
+    align-items: center;
+    height: 14%;
+    border-bottom: solid 0.1px rgb(172, 172, 165);
+    overflow: hidden;
+    white-space: nowrap;
+    }
+    */
+
+    /*
+    .main .item:hover {
+    background-color: black;
+    color: white;
+    }
+    */
 
     /*ボタンバー*/
     .buttonbar {
@@ -165,7 +247,7 @@
     }
 
     .buttonbar .center .button {
-        /*    align-items: center;*/
+        /* align-items: center;*/
         margin: 20px 5px;
         background-color: #3b3a45;
         border-top: solid 1px rgb(123, 122, 135);
@@ -174,18 +256,4 @@
         width: 100%;
     }
 
-    .main .item .numbox {
-        width: 8%;
-        margin: 2px;
-        padding: 3px;
-        border-radius: 20%;
-        background-color: #ddd;
-        text-align: center;
-        color: black;
-    }
-
-    .main .item .message {
-        flex: 1;
-        overflow: hidden;
-    }
 </style>

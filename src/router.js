@@ -5,6 +5,7 @@ import Keitai from './views/Keitai'
 import Mail from './views/Mail'
 import Inbox from './views/Inbox'
 import ReceivedMails from './views/ReceivedMails'
+import PreviewMail from "./views/PreviewMail";
 import Pokebell from "./views/Pokebell";
 import Send from "./views/Send"
 
@@ -29,14 +30,20 @@ export default new Router({
                     component: Mail
                 },
                 {
-                    path: 'inbox',
+                    path: 'mail/inbox',
                     name: 'inbox',
                     component: Inbox
                 },
                 {
-                    path: 'inbox/received',
+                    path: 'mail/inbox/received',
                     name: 'received',
                     component: ReceivedMails
+                },
+                {
+                    path: 'mail/inbox/received/:id',
+                    name: 'preview_mail',
+                    component: PreviewMail,
+                    props: true
                 },
             ]
         },

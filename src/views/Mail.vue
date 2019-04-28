@@ -14,7 +14,7 @@
             ◀ ﾒｰﾙ ▶
         </div>
         <div class="main">
-            <div class="item">1 受信ﾎﾞｯｸｽ</div>
+            <router-link tag="div" class="item" to="mail/inbox">1 受信ﾎﾞｯｸｽ</router-link>
             <div class="item">2 新規作成</div>
             <div class="item">3 新着ﾒｰﾙ受信</div>
             <div class="item">4 下書き</div>
@@ -42,8 +42,16 @@
 </template>
 
 <script>
+    import store from '../store'
+
     export default {
-        name: "Mail"
+        name: "Mail",
+        beforeRouteEnter(to, from, next) {
+            if (from.name === 'home') {
+                store.dispatch('fetchReceivedKeitaiMessagesAction')
+            }
+            next()
+        }
     }
 </script>
 
