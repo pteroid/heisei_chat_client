@@ -38,7 +38,10 @@ export default new Vuex.Store({
         }
     },
     mutations: {
-        getReceivedKeitaiMessages(state, payload) {
+        setReceivedKeitaiMessages(state, payload) {
+            for (let i in payload) {
+                payload[i].created_at = dayjs(payload[i].created_at)
+            }
             state.receivedKeitaiMessages = payload
         },
         setEditingMailProp(state, payload) {
@@ -49,7 +52,6 @@ export default new Vuex.Store({
     },
     actions: {
         async getReceivedKeitaiMessagesAction(context) {
-            // console.log("hoge")
             const res = await axios.post('http://localhost:5042/keitai/messages/received', {
                 email: 'fuga@docomo.ne.jp'
             })

@@ -19,7 +19,7 @@
                     {{message.id}}
                 </div>
                 <div class="message">
-                    ✉️{{message.created_at | timeFilter}} {{message.from_user.name}}<br>
+                    ✉️{{message.created_at.format("H:mm")}} {{message.from_user.name}}<br>
                     {{message.title}}
                 </div>
             </router-link>
@@ -50,14 +50,6 @@
                 }
             }
         },
-        methods: {},
-        filters: {
-            timeFilter: function (value) {
-                if (!value) return "";
-                value = new Date(value);
-                return value.getHours() + ":" + ("00" + value.getMinutes()).slice(-2);
-            }
-        }
     };
 </script>
 
