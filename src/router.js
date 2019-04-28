@@ -31,28 +31,28 @@ export default new Router({
                     component: Mail
                 },
                 {
-                    path: 'inbox',
+                    path: 'mail/inbox',
                     name: 'inbox',
                     component: Inbox
                 },
                 {
-                    path: 'inbox/received',
+                    path: 'mail/inbox/received',
                     name: 'received',
                     component: ReceivedMails
                 },
                 {
-                    path: 'inbox/received/:id',
+                    path: 'mail/inbox/received/:id',
                     name: 'preview_mail',
                     component: PreviewMail,
                     props: true
                 },
                 {
-                    path: 'new',
+                    path: 'mail/new',
                     name: 'create_mail',
                     component: CreateMail
                 },
                 {
-                    path: 'new/edit/:form_name',
+                    path: 'mail/new/edit/:form_name',
                     name: 'edit_mail_text',
                     component: EditMailText,
                     props: true

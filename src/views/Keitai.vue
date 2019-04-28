@@ -1,12 +1,5 @@
 <template>
     <div class="keitai">
-        <div id="nav">
-            <router-link to="/">Home</router-link>
-            <router-link to="/keitai/mail">Mail</router-link>
-            <router-link to="/keitai/inbox">Inbox</router-link>
-            <router-link to="/keitai/inbox/received">Inbox/ReceivedMails</router-link>
-            <router-link to="/about">About</router-link>
-        </div>
         <div style="background-color:#222; border-radius:1em; padding:14px; width:250px">
             <div class="display">
                 <router-view/>

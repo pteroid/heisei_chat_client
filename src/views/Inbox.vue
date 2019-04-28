@@ -14,7 +14,7 @@
             受信ﾎﾞｯｸｽ
         </div>
         <div class="main">
-            <div class="item">①📁 受信ﾒｰﾙ</div>
+            <router-link tag="div" class="item" to="inbox/received">①📁 受信ﾒｰﾙ</router-link>
             <div class="item">②📁 ﾕｰｻﾞｰﾌｫﾙﾀﾞ1</div>
             <div class="item">③📁 ﾕｰｻﾞｰﾌｫﾙﾀﾞ2</div>
             <div class="item">④📁 ﾕｰｻﾞｰﾌｫﾙﾀﾞ3</div>
