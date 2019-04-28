@@ -2,8 +2,8 @@
   <div class="home">
     <router-link to="/keitai/mail">Mail</router-link>
     <router-link to="/pokebell">Pokebell</router-link>
-    <div class="backAuth"></div>
-    <div class="auth">
+    <div class="backAuth" v-if="!logged"></div>
+    <div class="auth" v-if="!logged">
       <div class="auth2">
         <div class="authHeader">ログイン</div>
         <div class="authMain">
@@ -18,21 +18,28 @@
           <p>ユーザーID</p>
           <input type="text" v-model="identfier" placeholder="ID" maxlength="16">
         </div>
-        <button type="submit" class="submitBtn">OK!</button>
+        <button class="submitBtn" v-on:click="authSubmit()">OK!</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { METHODS } from 'http';
 export default {
   name: "home",
   data() {
     return {
       phoneNum: "",
       address: "",
-      identfier: ""
+      identfier: "",
+      logged: false,
     };
+  },
+  methods: {
+      authSubmit: function(){
+          this.logged  =  true;
+      }
   }
 };
 </script>
@@ -110,4 +117,3 @@ input {
   box-shadow: 2.5px 2.5px;
 }
 </style>
-
