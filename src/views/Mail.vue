@@ -48,7 +48,7 @@
         name: "Mail",
         beforeRouteEnter(to, from, next) {
             if (from.name === 'home') {
-                store.dispatch('getReceivedKeitaiMessagesAction')
+                store.dispatch('fetchReceivedKeitaiMessagesAction')
             }
             next()
         }

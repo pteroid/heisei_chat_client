@@ -51,11 +51,11 @@ export default new Vuex.Store({
 
     },
     actions: {
-        async getReceivedKeitaiMessagesAction(context) {
+        async fetchReceivedKeitaiMessagesAction(context) {
             const res = await axios.post('http://localhost:5042/keitai/messages/received', {
                 email: 'fuga@docomo.ne.jp'
             })
-            context.commit('getReceivedKeitaiMessages', res.data)
+            context.commit('setReceivedKeitaiMessages', res.data)
         }
     }
 })
