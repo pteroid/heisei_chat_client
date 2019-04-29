@@ -87,6 +87,11 @@ export default {
 };
 </script>
 <style>
+center {
+  position: absolute;
+  width: 100%;
+  padding-top: 13%;
+}
 .advice {
   width: 400px;
   text-align: center;
