@@ -7,7 +7,6 @@ import Inbox from './views/Inbox'
 import ReceivedMails from './views/ReceivedMails'
 import PreviewMail from "./views/PreviewMail";
 import Pokebell from "./views/Pokebell";
-import Send from "./views/Send"
 import Message from "./views/Message";
 
 Vue.use(Router)
