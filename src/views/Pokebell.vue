@@ -7,7 +7,7 @@
     </div>
     <div class="external">
       <div class="inside">
-        <div class="screen">{{messages[0].content}}</div>
+        <div class="screen">{{messages[messages.length-1].content}}</div>
         <div class="under">
           <div class="unser_left">
             <button></button>
