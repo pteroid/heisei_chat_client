@@ -143,7 +143,7 @@ export default {
   box-shadow: 0px 0px black;
 }
 
-.keitai {
+.list .keitai {
   margin: 10px;
   color: rgb(255, 94, 0);
   font-weight: bold;
@@ -156,12 +156,12 @@ export default {
   padding: 18px;
   box-shadow: 2.5px 2.5px black;
 }
-.keitai:hover {
+.list .keitai:hover {
   background: plum;
   transform: translate(1.5px, 1.5px);
   box-shadow: 1px 1px black;
 }
-.keitai:active {
+.list .keitai:active {
   transform: translate(2.5px, 2.5px);
   box-shadow: 0px 0px black;
 }
