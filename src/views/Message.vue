@@ -85,6 +85,7 @@ export default {
   color: #333;
   box-shadow: 3px 3px;
   transition: 0.1s;
+  resize: none;
 }
 .m_contents textarea:hover {
   transform: translate(-2px, -2px);
