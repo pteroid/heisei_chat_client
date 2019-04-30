@@ -61,7 +61,7 @@
             </router-link>
           </div>
           <div class="list">
-            <router-link tag="div" class="keitai" to="/keitai">
+            <router-link tag="div" class="keitai" to="/keitai/mail">
               ガラケーへの受信を
               <br>確認
             </router-link>
