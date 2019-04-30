@@ -53,13 +53,14 @@
       </table>
       <div class="select">
         <div class="list">
-          <div class="pokebell">ポケベルへの受信を<br>確認</div>
+          <!--<router-link tag="div" class="item" :to="{name: 'preview_mail', params:{id: message.id}}"-->
+          <router-link tag="div" class="pokebell" to="/Pokebell">ポケベルへの受信を<br>確認</router-link>
         </div>
         <div class="list">
-          <div class="keitai">ガラケーへの受信を<br>確認</div>
+          <router-link tag="div" class="keitai" to="/keitai">ガラケーへの受信を<br>確認</router-link>
         </div>
         <div class="list">
-          <div class="create">メッセージを<br>作成</div>
+          <router-link tag="div" class="create" to="/send">メッセージを<br>作成</router-link>
         </div>
       </div>
     </center>
