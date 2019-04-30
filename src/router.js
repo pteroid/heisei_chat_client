@@ -7,7 +7,6 @@ import Inbox from './views/Inbox'
 import ReceivedMails from './views/ReceivedMails'
 import PreviewMail from "./views/PreviewMail";
 import Pokebell from "./views/Pokebell";
-import Send from "./views/Send"
 import Message from "./views/Message";
 
 Vue.use(Router)
@@ -54,11 +53,6 @@ export default new Router({
             component: Pokebell
         },
         {
-            path: '/home',
-            name: 'home2',
-            component: Send
-        },
-        {
             path: '/about',
             name: 'about',
             // route level code-splitting
@@ -68,7 +62,7 @@ export default new Router({
         },
         {
             path: '/send',
-            name:'send',
+            name: 'send',
             component: Message
         }
     ]
