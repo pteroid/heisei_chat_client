@@ -48,7 +48,10 @@
         name: "Mail",
         beforeRouteEnter(to, from, next) {
             if (from.name === 'home') {
-                store.dispatch('fetchReceivedKeitaiMessagesAction')
+                console.log('mail fetched')
+                store.dispatch('fetchReceivedKeitaiMessagesAction', {
+                    email: store.state.userInfo.email
+                })
             }
             next()
         }

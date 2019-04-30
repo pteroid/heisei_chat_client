@@ -7,6 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        logged: false,
         userInfo: {
             number: "",
             email: "",
@@ -90,21 +91,35 @@ export default new Vuex.Store({
             }
             state.receivedKeitaiMessages = payload
         },
+        setReceivedPokebellMessages(state, payload) {
+            for (let i in payload) {
+                payload[i].created_at = dayjs(payload[i].created_at)
+            }
+            console.log(payload)
+            state.receivedPokebellMessages = payload
+        },
         setUserInfoProp(state, payload) {
             state.userInfo[payload.prop_name] = payload.value
         },
         setEditingMailProp(state, payload) {
             state.editingMail[payload.prop_name] = payload.value
+        },
+        setLoggedTrue(state) {
+            state.logged = true
         }
-
-
     },
     actions: {
-        async fetchReceivedKeitaiMessagesAction(context) {
+        async fetchReceivedKeitaiMessagesAction(context, payload) {
             const res = await axios.post('http://localhost:5042/keitai/messages/received', {
-                email: 'fuga@docomo.ne.jp'
+                email: payload.email
             })
             context.commit('setReceivedKeitaiMessages', res.data)
+        },
+        async fetchReceivedPokebellMessagesAction(context, payload) {
+            const res = await axios.post('http://localhost:5042/pokebel/messages/received', {
+                number: payload.number
+            })
+            context.commit('setReceivedPokebellMessages', res.data)
         }
     }
 })
