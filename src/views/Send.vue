@@ -1,6 +1,6 @@
 <template>
   <div class="homeBack">
-    <center>
+    <center class="homec">
       <!--
     <select v-model="toYear">
       <option v-for="year in years" :value="year.value" :key="year.id">{{year.text}}</option>
@@ -87,7 +87,7 @@ export default {
 };
 </script>
 <style>
-center {
+.homec {
   position: absolute;
   width: 100%;
   padding-top: 13%;
