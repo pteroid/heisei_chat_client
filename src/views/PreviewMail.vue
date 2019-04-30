@@ -40,7 +40,12 @@
                     <div class="content">添付ﾌｧｲﾙなし</div>
                 </div>
             </div>
-            <div class="mailcontent">{{this.message.content}}</div>
+            <div class="mailcontent">
+                <div class="text_or_emoji" v-for="d in message.content_dict" :key="d.id">
+                    <div class="text" v-if="d.hasOwnProperty('text')">{{d.text}}</div>
+                    <img class="emoji" v-else :src="'/imode_emoji_data/' + d.emoji">
+                </div>
+            </div>
         </div>
         <div class="buttonbar">
             <div class="side">
@@ -64,15 +69,37 @@
     export default {
         name: "PreviewMail",
         props: ['id'],
+        data() {
+            return {
+                items: [
+                    {
+                        id: 1,
+                        emoji: "/imode_emoji_data/iモード.png"
+                        // text: ""
+                    },
+                    {
+                        id: 2,
+                        text: "テキストあああ\nああああああ\nあああああ"
+                    },
+                    {
+                        id: 3,
+                        emoji: "/imode_emoji_data/iモード.png"
+                        // text: ""
+                    },
+                    {
+                        id: 4,
+                        text: "テキスト"
+                    }
+                ]
+            }
+        },
         computed: {
             message: {
                 get() {
                     return this.$store.state.receivedKeitaiMessages
                         .find(msg => msg.id === Number(this.id))
                 }
-            }
-
-
+            },
         },
 
     }
@@ -182,6 +209,22 @@
         overflow: auto;
         flex: 1;
         white-space: pre-wrap;
+    }
+
+    .main .mailcontent .text_or_emoji {
+        display: inline;
+        /*float: left;*/
+    }
+
+    .main .mailcontent .text_or_emoji .text {
+        display: inline;
+        /*float:left;*/
+    }
+
+    .main .mailcontent .text_or_emoji .emoji {
+        display: inline;
+        width: 1rem;
+        height: 1rem;
     }
 
 
