@@ -21,7 +21,42 @@
 
 <script>
 export default {
-  name: "SendMessage"
+  name: "SendMessage",
+  computed: {
+    number: {
+      get() {
+        return this.$store.state.userInfo.number;
+      },
+      set(value) {
+        this.$store.commit("setUserInfoProp", {
+          prop_name: "number",
+          value: value
+        });
+      }
+    },
+    e_mail: {
+      get() {
+        return this.$store.state.userInfo.email;
+      },
+      set(value) {
+        this.$store.commit("setUserInfoProp", {
+          prop_name: "email",
+          value: value
+        });
+      }
+    },
+    username: {
+      get() {
+        return this.$store.state.userInfo.username;
+      },
+      set(value) {
+        this.$store.commit("setUserInfoProp", {
+          prop_name: "username",
+          value: value
+        });
+      }
+    }
+  }
 };
 </script>
 <style>
@@ -108,13 +143,13 @@ export default {
 }
 .submit button:hover {
   color: aliceblue;
-  transform: translate(-2px, -2px) scale(1.3,1.2);
+  transform: translate(-2px, -2px) scale(1.3, 1.2);
   box-shadow: 5px 5px black;
   background: url(../assets/img_main-bg.gif);
 }
 .submit button:active {
   color: aliceblue;
-  transform: translate(2px, 2px) scale(1.3,1.2);
+  transform: translate(2px, 2px) scale(1.3, 1.2);
   box-shadow: 1px 1px black;
 }
 .submit button:focus {
