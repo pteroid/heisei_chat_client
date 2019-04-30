@@ -8,6 +8,7 @@ import ReceivedMails from './views/ReceivedMails'
 import PreviewMail from "./views/PreviewMail";
 import Pokebell from "./views/Pokebell";
 import Send from "./views/Send"
+import Message from "./views/Message";
 
 Vue.use(Router)
 
@@ -53,8 +54,8 @@ export default new Router({
             component: Pokebell
         },
         {
-            path: '/send',
-            name: 'send',
+            path: '/home',
+            name: 'home2',
             component: Send
         },
         {
@@ -64,6 +65,11 @@ export default new Router({
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+        },
+        {
+            path: '/send',
+            name:'send',
+            component: Message
         }
     ]
 })
