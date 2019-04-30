@@ -7,7 +7,7 @@
     </div>
     <div class="external">
       <div class="inside">
-        <div class="screen">結果の出力</div>
+        <div class="screen">{{messages[0].content}}</div>
         <div class="under">
           <div class="unser_left">
             <button></button>
@@ -23,7 +23,14 @@
 
 <script>
 export default {
-  name: "Pokebell"
+  name: "Pokebell",
+  computed: {
+    messages: {
+      get() {
+        return this.$store.state.receivedPokebellMessages;
+      }
+    }
+  }
 };
 </script>
 
